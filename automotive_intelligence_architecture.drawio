@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T01:30:00.000Z" agent="Antigravity Enterprise Architect" version="22.1.18" type="device">
+  <diagram id="automotive_intelligence_system" name="Automotive Intelligence Architecture">
+    <mxGraphModel dx="2800" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2750" pageHeight="1470" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+<mxCell id="cell_2" value="&lt;div style=&apos;text-align: center;&apos;&gt;&lt;span style=&apos;font-size: 26px; font-weight: 800; color: #0F172A; letter-spacing: -0.5px;&apos;&gt;🚗 AUTOMOTIVE WORLD ONTOLOGY: DYNAMIC QUERY &amp; MULTI-CADENCE INTELLIGENCE&lt;/span&gt;&lt;br/&gt;&lt;span style=&apos;font-size: 14px; font-weight: 500; color: #475569;&apos;&gt;Production Architecture: Multi-Cadence Ingestion ➔ Neo4j Graph ➔ SLM Query Planner &amp;amp; Deterministic Solvers ➔ Closed-Loop Recalibration&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=2;shadow=1;arcSize=8;" vertex="1" parent="1">
+  <mxGeometry x="50" y="40" width="2600" height="70" as="geometry"/>
+</mxCell>
+<mxCell id="cell_3" value="&lt;div style=&apos;text-align: center; margin-top: 10px;&apos;&gt;&lt;span style=&apos;font-size: 16px; font-weight: 700; color: #0369A1;&apos;&gt;STAGE 1: MULTI-CADENCE INGESTION&lt;/span&gt;&lt;br/&gt;&lt;span style=&apos;font-size: 12px; color: #0284C7;&apos;&gt;Scheduled &amp;amp; Event-Triggered Automated Pipeline&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#38BDF8;strokeWidth=2;verticalAlign=top;arcSize=6;shadow=0;" vertex="1" parent="1">
+  <mxGeometry x="50" y="130" width="600" height="1260" as="geometry"/>
+</mxCell>
+<mxCell id="cell_4" value="&lt;div style=&apos;text-align: center; margin-top: 10px;&apos;&gt;&lt;span style=&apos;font-size: 16px; font-weight: 700; color: #15803D;&apos;&gt;STAGE 2: KNOWLEDGE GRAPH &amp;amp; ONTOLOGY&lt;/span&gt;&lt;br/&gt;&lt;span style=&apos;font-size: 12px; color: #16A34A;&apos;&gt;Neo4j Typed Property Graph (700 Nodes, 2,029 Rels)&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#4ADE80;strokeWidth=2;verticalAlign=top;arcSize=6;shadow=0;" vertex="1" parent="1">
+  <mxGeometry x="690" y="130" width="640" height="1260" as="geometry"/>
+</mxCell>
+<mxCell id="cell_5" value="&lt;div style=&apos;text-align: center; margin-top: 10px;&apos;&gt;&lt;span style=&apos;font-size: 16px; font-weight: 700; color: #B45309;&apos;&gt;STAGE 3: DYNAMIC QUERYING &amp;amp; SOLVERS&lt;/span&gt;&lt;br/&gt;&lt;span style=&apos;font-size: 12px; color: #D97706;&apos;&gt;SLM Intent Planner + Guardrailed Cypher + Solvers&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#FBBF24;strokeWidth=2;verticalAlign=top;arcSize=6;shadow=0;" vertex="1" parent="1">
+  <mxGeometry x="1370" y="130" width="640" height="1260" as="geometry"/>
+</mxCell>
+<mxCell id="cell_6" value="&lt;div style=&apos;text-align: center; margin-top: 10px;&apos;&gt;&lt;span style=&apos;font-size: 16px; font-weight: 700; color: #6D28D9;&apos;&gt;STAGE 4: CLIENT DECISION &amp;amp; FEEDBACK&lt;/span&gt;&lt;br/&gt;&lt;span style=&apos;font-size: 12px; color: #7C3AED;&apos;&gt;Executive Solutions &amp;amp; Closed-Loop Recalibration&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=2;verticalAlign=top;arcSize=6;shadow=0;" vertex="1" parent="1">
+  <mxGeometry x="2050" y="130" width="600" height="1260" as="geometry"/>
+</mxCell>
+<mxCell id="cell_7" value="&lt;div style=&apos;font-weight: 700; color: #0C4A6E; font-size: 13px; text-align: center; margin-bottom: 5px;&apos;&gt;⏱️ Realistic Ingestion Cadences (No Fake Streaming)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BAE6FD;strokeWidth=1.5;verticalAlign=top;spacingTop=6;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="70" y="190" width="560" height="230" as="geometry"/>
+</mxCell>
+<mxCell id="cell_8" value="&lt;b&gt;📅 Monthly Cadence: Industry Volume&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;• SIAM OEM wholesale dispatches&lt;br/&gt;• VAHAN state-level registration counts&lt;br/&gt;• Monthly YoY market share updates&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="85" y="230" width="255" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="cell_9" value="&lt;b&gt;📅 Weekly / Daily: Dynamic Signals&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;• Ex-showroom price ladders &amp;amp; discounts&lt;br/&gt;• Google Search intent volume shifts&lt;br/&gt;• Team-BHP &amp;amp; forum ownership threads&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="355" y="230" width="260" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="cell_10" value="&lt;b&gt;⚡ Event-Triggered: Vehicle Launches&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;• New car / facelift launch brochures&lt;br/&gt;• Global NCAP / Bharat NCAP crash ratings&lt;br/&gt;• Engine powertrain transitions (e.g. Z12E)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="85" y="325" width="255" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="cell_11" value="&lt;b&gt;🔍 On-Demand: Ad-Hoc Target Scrape&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;• Targeted competitor refresh via CLI&lt;br/&gt;• &lt;code&gt;python -m data_collector --model ...&lt;/code&gt;&lt;br/&gt;• Immediate layer JSON generation&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="355" y="325" width="260" height="80" as="geometry"/>
+</mxCell>
+<mxCell id="cell_12" value="&lt;b&gt;🤖 AI-Augmented Extraction &amp;amp; Validation Pipeline&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#475569;&apos;&gt;• &lt;b&gt;Tavily &amp;amp; Google Grounding:&lt;/b&gt; Real-time targeted web extraction&lt;br/&gt;• &lt;b&gt;Pydantic Schemas:&lt;/b&gt; Strict entity type validation &amp;amp; deduplication&lt;br/&gt;• &lt;b&gt;Temporal Tagging:&lt;/b&gt; Applies &lt;code&gt;valid_from&lt;/code&gt;, &lt;code&gt;valid_to&lt;/code&gt;, and &lt;code&gt;is_current&lt;/code&gt;&lt;br/&gt;• &lt;b&gt;Provenance Ledger:&lt;/b&gt; Links every fact to source name, credibility tier &amp;amp; score&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="70" y="440" width="560" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="cell_13" value="&lt;div style=&apos;font-weight: 700; color: #0C4A6E; font-size: 13px; text-align: center; margin-bottom: 6px;&apos;&gt;📦 12-Layer Normalized Automotive Ontology Dataset (JSON)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BAE6FD;strokeWidth=1.5;verticalAlign=top;spacingTop=6;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="70" y="560" width="560" height="790" as="geometry"/>
+</mxCell>
+<mxCell id="cell_14" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L01: Vehicle Master&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Model name, brand, body type, segment, launch year, status&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="600" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_15" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L02: Spec &amp; Feature Master&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Dimensions, boot space, ground clearance, safety equipment&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="659" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_16" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L03: Feature Taxonomy&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Standard vs Optional across Comfort, Tech, Safety, Performance&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="718" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_17" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L04: Competitor Master&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Direct rival models, overlap score, primary battlegrounds&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="777" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_18" value="&lt;b style=&apos;color:#0369A1;&apos;&gt;L05: Audience Segments&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Family, First-Time Buyer, Gig Worker, budget bands, daily km&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="836" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_19" value="&lt;b style=&apos;color:#0369A1;&apos;&gt;L06: Buying Factors&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Mileage, safety, resale value, low maintenance, tech features&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="895" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_20" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L07: Review Corpus&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Curated critic reviews, verified scores, comprehensive verdicts&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="954" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_21" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L08: Opinion Dataset&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Fine-grained claims, sentiment polarities, aspect tags, intensity&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1013" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_22" value="&lt;b style=&apos;color:#0369A1;&apos;&gt;L09: Search &amp; Intent&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Buyer query logs, stage classification (Research vs Buying)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1072" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_23" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L10: Sales Dispatches&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Monthly units sold, segment market share %, YoY growth trends&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1131" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_24" value="&lt;b style=&apos;color:#0284C7;&apos;&gt;L11: Pricing &amp; Offers&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Ex-showroom ladders, trim variants, festive discounts &amp; EMI bands&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1190" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_25" value="&lt;b style=&apos;color:#0369A1;&apos;&gt;L12: Ontology Summary&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Graph linkage metadata, cross-domain cross-validation checks&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;strokeWidth=1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+  <mxGeometry x="85" y="1249" width="530" height="50" as="geometry"/>
+</mxCell>
+<mxCell id="cell_26" value="&lt;b&gt;⚙️ Graph Transformation &amp;amp; Ingestion Pipeline (loader.py)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#166534;&apos;&gt;• Schema Constraints &amp;amp; Unique Indexes (Unique IDs for 23 labels)&lt;br/&gt;• Idempotent MERGE Cypher Operations (Lossless re-ingestion &amp;amp; historical preservation)&lt;br/&gt;• Non-destructive history (prevents overwriting historical sales and price changes)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="715" y="190" width="590" height="85" as="geometry"/>
+</mxCell>
+<mxCell id="cell_27" value="&lt;div style=&apos;font-weight: 700; color: #14532D; font-size: 13px; text-align: center; margin-bottom: 6px;&apos;&gt;🕸️ Neo4j Typed Property Graph (23 Labels • 25 Relationships • 5 Domains)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#86EFAC;strokeWidth=1.5;verticalAlign=top;spacingTop=8;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="715" y="300" width="590" height="1050" as="geometry"/>
+</mxCell>
+<mxCell id="cell_28" value="&lt;b&gt;📦 1. PRODUCT &amp;amp; SPECIFICATION DOMAIN&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• &lt;b&gt;(:Brand)&lt;/b&gt; &lt;code&gt;-[:PRODUCES]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:VehicleModel)&lt;/b&gt; &lt;code&gt;-[:HAS_GENERATION]-&gt;&lt;/code&gt; &lt;b&gt;(:Generation)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:VehicleModel)&lt;/b&gt; &lt;code&gt;-[:HAS_VARIANT]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleVariant)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:VehicleVariant)&lt;/b&gt; &lt;code&gt;-[:USES_ENGINE]-&gt;&lt;/code&gt; &lt;b&gt;(:Engine)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:VehicleVariant)&lt;/b&gt; &lt;code&gt;-[:HAS_FEATURE]-&gt;&lt;/code&gt; &lt;b&gt;(:Feature)&lt;/b&gt;&lt;br/&gt;• Node attributes: &lt;code&gt;ncap_rating&lt;/code&gt;, &lt;code&gt;boot_space&lt;/code&gt;, &lt;code&gt;airbags&lt;/code&gt;, &lt;code&gt;seating&lt;/code&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="345" width="550" height="150" as="geometry"/>
+</mxCell>
+<mxCell id="cell_29" value="&lt;b&gt;👥 2. CUSTOMER &amp;amp; BUYING PERSONA DOMAIN&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• &lt;b&gt;(:CustomerSegment)&lt;/b&gt; (Demographics, Income, Daily KM, Budget Band)&lt;br/&gt;• &lt;b&gt;(:CustomerSegment)&lt;/b&gt; &lt;code&gt;-[:PRIORITIZES {importance_weight}]-&gt;&lt;/code&gt; &lt;b&gt;(:BuyingFactor)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:CustomerSegment)&lt;/b&gt; &lt;code&gt;-[:CONSIDERS]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:Feature)&lt;/b&gt; &lt;code&gt;-[:SATISFIES]-&gt;&lt;/code&gt; &lt;b&gt;(:Need)&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="510" width="550" height="125" as="geometry"/>
+</mxCell>
+<mxCell id="cell_30" value="&lt;b&gt;🥊 3. COMPETITIVE BATTLEGROUND DYNAMICS&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• &lt;b&gt;(:VehicleModel)&lt;/b&gt; &lt;code&gt;-[:COMPETES_WITH {score, price_overlap, customer_overlap}]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt;&lt;br/&gt;• Traverses cross-shopping rivalry (Dzire ↔ Amaze ↔ Aura, Wagon R ↔ Tiago)&lt;br/&gt;• Exposes price overlap percentage &amp;amp; key battleground factors&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="650" width="550" height="115" as="geometry"/>
+</mxCell>
+<mxCell id="cell_31" value="&lt;b&gt;💬 4. OPINION, SENTIMENT &amp;amp; BEHAVIORAL DOMAIN&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• &lt;b&gt;(:Review)&lt;/b&gt; &lt;code&gt;-[:ABOUT]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:Review)&lt;/b&gt; &lt;code&gt;-[:CONTAINS]-&gt;&lt;/code&gt; &lt;b&gt;(:Opinion)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:Opinion)&lt;/b&gt; &lt;code&gt;-[:ABOUT_ASPECT]-&gt;&lt;/code&gt; &lt;b&gt;(:Aspect)&lt;/b&gt; (Mileage, Safety, NVH, Space)&lt;br/&gt;• &lt;b&gt;(:SearchQuery)&lt;/b&gt; &lt;code&gt;-[:TARGETS]-&gt;&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt; &lt;code&gt;-[:HAS_INTENT]-&gt;&lt;/code&gt; &lt;b&gt;(:Intent)&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF4FF;strokeColor=#C026D3;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="780" width="550" height="135" as="geometry"/>
+</mxCell>
+<mxCell id="cell_32" value="&lt;b&gt;📊 5. COMMERCIAL OBSERVATION &amp;amp; PROVENANCE&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• &lt;b&gt;(:PriceObservation {valid_from, valid_to, ex_showroom_inr})&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:SalesObservation {period_value, units_sold, yoy_change_percent})&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:MarketChange)&lt;/b&gt; &lt;code&gt;&lt;-[:UNDERWENT_CHANGE]-&lt;/code&gt; &lt;b&gt;(:VehicleModel)&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;(:Evidence)&lt;/b&gt; &lt;code&gt;-[:BACKS_CLAIM]-&gt;&lt;/code&gt; &lt;b&gt;(:Source)&lt;/b&gt; (Traceable audit trail)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#475569;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="930" width="550" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="cell_33" value="&lt;div style=&apos;text-align:center;&apos;&gt;&lt;b&gt;🟢 LIVE GRAPH INSTANCE (Docker Verified)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:11px;color:#15803D;&apos;&gt;&lt;b&gt;700 Nodes&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;2,029 Relationships&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;21 Vehicle Models&lt;/b&gt; &amp;nbsp;|&amp;nbsp; &lt;b&gt;Port 7474 / 7687&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="1085" width="550" height="55" as="geometry"/>
+</mxCell>
+<mxCell id="cell_34" value="&lt;b&gt;📐 Graph Schema &amp;amp; Metamodel Registry (schema/metamodel.yaml)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;Provides allowed entity labels, relationship types, and properties to the Query Planner&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#64748B;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="735" y="1155" width="550" height="65" as="geometry"/>
+</mxCell>
+<mxCell id="cell_35" value="&lt;b&gt;🤖 SLM Intent &amp;amp; Query Planner (Gemma 9B / Gemini Flash)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#78350F;&apos;&gt;1. &lt;b&gt;Natural Language Parsing:&lt;/b&gt; Extracts entities (&apos;Dzire&apos;, &apos;Amaze&apos;), intent (&apos;Compare&apos;, &apos;Simulate Price Cut&apos;)&lt;br/&gt;2. &lt;b&gt;Tool &amp;amp; Query Routing:&lt;/b&gt;&lt;br/&gt;   • Common questions ➔ Routes to &lt;b&gt;Deterministic Parameterized Tools&lt;/b&gt;&lt;br/&gt;   • Open-ended inquiries ➔ Generates &lt;b&gt;Schema-Aware Read-Only Cypher&lt;/b&gt;&lt;br/&gt;3. &lt;b&gt;Guardrailed Validator:&lt;/b&gt; Rejects write operations (MERGE, SET, DELETE); enforces timeouts &amp;amp; row limits&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="1395" y="190" width="590" height="115" as="geometry"/>
+</mxCell>
+<mxCell id="cell_36" value="&lt;div style=&apos;font-weight: 700; color: #78350F; font-size: 13px; text-align: center; margin-bottom: 6px;&apos;&gt;⚡ Dual-Path Execution: Deterministic Tools &amp;amp; Validated Cypher&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=1.5;verticalAlign=top;spacingTop=8;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="1395" y="325" width="590" height="1025" as="geometry"/>
+</mxCell>
+<mxCell id="cell_37" value="&lt;div style=&apos;font-size: 12px; font-weight: 700; color: #9A3412;&apos;&gt;🔍 PATH A: SCHEMA-AWARE DYNAMIC CYPHER EXECUTION&lt;/div&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• Generates custom read-only multi-hop queries based on user questions&lt;br/&gt;• Validates AST against Neo4j Metamodel (rejects arbitrary hallucinated labels)&lt;br/&gt;• Executes with strict parameterization and LIMIT 50 controls&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="370" width="550" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="cell_38" value="&lt;div style=&apos;font-size: 12px; font-weight: 700; color: #9A3412;&apos;&gt;🎯 1. AUDIENCE–VEHICLE FIT SCORING ENGINE&lt;/div&gt;&lt;div style=&apos;background: #FFF7ED; padding: 4px; margin: 3px 0; border: 1px solid #FFEDD5; border-radius: 4px; font-family: monospace; font-size: 10px; text-align: center; color: #C2410C;&apos;&gt;Fit(s, v) = ( ∑ w_{s,i} × a_{v,i} ) / ( ∑ w_{s,i} )&lt;/div&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• Reads node properties (&lt;code&gt;ncap_rating&lt;/code&gt;, &lt;code&gt;boot_space&lt;/code&gt;, &lt;code&gt;mileage&lt;/code&gt;) dynamically&lt;br/&gt;• Mathematically computes persona fit across 21 models with grounded trade-offs&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#EA580C;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="485" width="550" height="130" as="geometry"/>
+</mxCell>
+<mxCell id="cell_39" value="&lt;div style=&apos;font-size: 12px; font-weight: 700; color: #9A3412;&apos;&gt;🥊 2. COMPETITIVE GAP &amp;amp; VULNERABILITY ENGINE&lt;/div&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• Head-to-head feature win/loss comparison (&lt;code&gt;gap_analysis.py&lt;/code&gt;)&lt;br/&gt;• Computes unaddressed opportunity scores: &lt;code&gt;Opportunity_Gap = (1 - Score) × Weight&lt;/code&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="630" width="550" height="95" as="geometry"/>
+</mxCell>
+<mxCell id="cell_40" value="&lt;div style=&apos;font-size: 12px; font-weight: 700; color: #9A3412;&apos;&gt;⚡ 3. CAUSAL MARKET CHANGE &amp;amp; IMPACT TRACER&lt;/div&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• Multi-hop traversal of real market disruptions (&lt;code&gt;impact_tracer.py&lt;/code&gt;)&lt;br/&gt;• Propagates event ripple (e.g. Dzire 5★ NCAP leap ➔ pressures Amaze &amp;amp; Aura)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="740" width="550" height="95" as="geometry"/>
+</mxCell>
+<mxCell id="cell_41" value="&lt;div style=&apos;font-size: 12px; font-weight: 700; color: #9A3412;&apos;&gt;📈 4. SALES FORECASTING &amp;amp; SCENARIO SIMULATION&lt;/div&gt;&lt;span style=&apos;font-size:10px;color:#334155;&apos;&gt;• Automated model selection: Naïve vs SMA-3 vs Holt&apos;s Exponential Smoothing&lt;br/&gt;• Simulates price cuts and rival shocks with 80% &amp;amp; 95% confidence intervals&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="850" width="550" height="110" as="geometry"/>
+</mxCell>
+<mxCell id="cell_42" value="&lt;b&gt;🧠 Stronger LLM Synthesizer (Gemini Pro / Claude)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#4C1D95;&apos;&gt;• Merges retrieved Neo4j evidence + simulation outputs into clear executive answers&lt;br/&gt;• Strictly separates &lt;b&gt;verified facts&lt;/b&gt; from &lt;b&gt;assumptions &amp;amp; correlations&lt;/b&gt;&lt;br/&gt;• Attaches confidence score, source citations, and analytical limitations&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="1415" y="975" width="550" height="115" as="geometry"/>
+</mxCell>
+<mxCell id="cell_43" value="&lt;div style=&apos;font-weight: 700; color: #4C1D95; font-size: 13px; text-align: center; margin-bottom: 6px;&apos;&gt;🖥️ Executive Delivery Channels &amp;amp; Interfaces&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8B4FE;strokeWidth=1.5;verticalAlign=top;spacingTop=6;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="2070" y="190" width="560" height="180" as="geometry"/>
+</mxCell>
+<mxCell id="cell_44" value="&lt;b&gt;Automotive Decision CLI (cli.py)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Ranking, persona fit, trade-offs&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="230" width="255" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="cell_45" value="&lt;b&gt;Neo4j Browser (:7474)&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Visual exploration of nodes &amp;amp; paths&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="2355" y="230" width="260" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="cell_46" value="&lt;b&gt;Executive Strategy Memos&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Causal reports with evidence ledger&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="295" width="255" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="cell_47" value="&lt;b&gt;Enterprise REST / Python SDK&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#64748B;&apos;&gt;Automated query API for ERP &amp;amp; BI&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+  <mxGeometry x="2355" y="295" width="260" height="60" as="geometry"/>
+</mxCell>
+<mxCell id="cell_48" value="&lt;div style=&apos;font-weight: 700; color: #4C1D95; font-size: 13px; text-align: center; margin-bottom: 6px;&apos;&gt;🎯 High-Value Business Problems Solved for Clients&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C084FC;strokeWidth=2;verticalAlign=top;spacingTop=8;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="2070" y="390" width="560" height="690" as="geometry"/>
+</mxCell>
+<mxCell id="cell_49" value="&lt;div style=&apos;font-size:12px; font-weight:700; color:#7C3AED; margin-bottom:4px;&apos;&gt;💼 1. PRODUCT PLANNING &amp;amp; TRIM OPTIMIZATION&lt;/div&gt;&lt;span style=&apos;font-size:10px; color:#1E293B;&apos;&gt;• &lt;b&gt;Problem:&lt;/b&gt; Avoid tooling costs by discovering which features (e.g. 6 airbags, rear AC) trigger purchase decisions vs bloat MSRP.&lt;br/&gt;• &lt;b&gt;Action:&lt;/b&gt; Evaluates feature satisfaction paths before vehicle manufacturing.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="430" width="530" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="cell_50" value="&lt;div style=&apos;font-size:12px; font-weight:700; color:#A21CAF; margin-bottom:4px;&apos;&gt;🎯 2. PRECISION CUSTOMER SEGMENTATION&lt;/div&gt;&lt;span style=&apos;font-size:10px; color:#1E293B;&apos;&gt;• &lt;b&gt;Problem:&lt;/b&gt; Eliminates demographic guesswork.&lt;br/&gt;• &lt;b&gt;Action:&lt;/b&gt; Computes verified Persona Fit Scores (Urban Families vs Gig Workers), identifying purchase drivers and friction barriers.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF4FF;strokeColor=#A21CAF;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="585" width="530" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="cell_51" value="&lt;div style=&apos;font-size:12px; font-weight:700; color:#E11D48; margin-bottom:4px;&apos;&gt;🥊 3. COMPETITIVE BATTLEGROUND DEFENSE&lt;/div&gt;&lt;span style=&apos;font-size:10px; color:#1E293B;&apos;&gt;• &lt;b&gt;Problem:&lt;/b&gt; Pinpoint rival vulnerabilities before market share dips.&lt;br/&gt;• &lt;b&gt;Action:&lt;/b&gt; Automated head-to-head gap analysis with pricing ladder overlap and feature exclusivity matrices.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="740" width="530" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="cell_52" value="&lt;div style=&apos;font-size:12px; font-weight:700; color:#059669; margin-bottom:4px;&apos;&gt;💰 4. PRICING &amp;amp; CANNIBALIZATION SIMULATION&lt;/div&gt;&lt;span style=&apos;font-size:10px; color:#1E293B;&apos;&gt;• &lt;b&gt;Problem:&lt;/b&gt; Test pricing moves without cannibalizing internal trims.&lt;br/&gt;• &lt;b&gt;Action:&lt;/b&gt; Counterfactual forecasting simulates volume elasticity across trims based on verified SIAM historical dispatches.&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+  <mxGeometry x="2085" y="895" width="530" height="140" as="geometry"/>
+</mxCell>
+<mxCell id="cell_53" value="&lt;b&gt;🔄 Closed-Loop Operational Recalibration Pipeline&lt;/b&gt;&lt;br/&gt;&lt;span style=&apos;font-size:10px;color:#9F1239;&apos;&gt;1. &lt;b&gt;Observed Sales &amp;amp; Price Feed:&lt;/b&gt; Real SIAM monthly data and price cuts update observations&lt;br/&gt;2. &lt;b&gt;Residual Calibration:&lt;/b&gt; Forecast errors adjust price elasticity coefficients (η) in World Model&lt;br/&gt;3. &lt;b&gt;Weight Drift Adaptation:&lt;/b&gt; Shifts in search trends re-weight customer buying factors automatically&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#E11D48;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;shadow=1;arcSize=6;" vertex="1" parent="1">
+  <mxGeometry x="2070" y="1100" width="560" height="110" as="geometry"/>
+</mxCell>
+<mxCell id="cell_54" value="Multi-cadence streams" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0284C7;strokeWidth=2.5;fontColor=#0369A1;" edge="1" parent="1" source="cell_7" target="cell_12">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_55" value="Validated JSON Layers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0284C7;strokeWidth=2.5;fontColor=#0369A1;" edge="1" parent="1" source="cell_12" target="cell_13">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_56" value="Scheduled / Triggered Ingestion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#16A34A;strokeWidth=3;fontColor=#15803D;" edge="1" parent="1" source="cell_13" target="cell_26">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_57" value="Idempotent Cypher MERGE" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#16A34A;strokeWidth=2.5;fontColor=#15803D;" edge="1" parent="1" source="cell_26" target="cell_27">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_58" value="Graph Metamodel &amp; Schema Context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#64748B;strokeWidth=2;fontColor=#334155;" edge="1" parent="1" source="cell_34" target="cell_35">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_59" value="Structured Intent &amp; Selected Tools" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#D97706;strokeWidth=3;fontColor=#B45309;" edge="1" parent="1" source="cell_35" target="cell_36">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_60" value="Retrieved Subgraphs &amp; Scored Evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7C3AED;strokeWidth=2.5;fontColor=#6D28D9;" edge="1" parent="1" source="cell_36" target="cell_42">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_61" value="Causal Answers &amp; Memos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7C3AED;strokeWidth=3;fontColor=#6D28D9;" edge="1" parent="1" source="cell_42" target="cell_43">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="cell_62" value="Actionable Decisions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7C3AED;strokeWidth=2.5;fontColor=#6D28D9;" edge="1" parent="1" source="cell_43" target="cell_48">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="edge_recalibration" value="Model Recalibration: Forecast Residuals &amp; Search Shifts Update Future Weights" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E11D48;strokeWidth=2.5;dashed=1;fontColor=#9F1239;fontSize=11;" edge="1" parent="1" source="cell_53" target="cell_7">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="2350" y="1410"/>
+      <mxPoint x="350" y="1410"/>
+    </Array>
+  </mxGeometry>
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

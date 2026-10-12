@@ -1,0 +1,485 @@
+# ==============================================================================
+# AUTOMOTIVE WORLD ONTOLOGY SPECIFICATION (V1.0)
+# ==============================================================================
+# A Typed Property Graph Schema connecting Product, Customer, Market, Opinion,
+# Behavioral, Commercial, and Decision Domains into a Unified Automotive Graph.
+# ==============================================================================
+
+ontology:
+  name: AutomotiveWorldOntology
+  version: "1.0.0"
+  description: "Unified typed property graph schema for automotive intelligence, customer segments, opinions, market dynamics, and product decisions."
+
+# ── DOMAINS ──────────────────────────────────────────────────────────────────
+domains:
+  - id: product
+    name: Product & Specification Domain
+    description: "Hierarchical product structure from Brand down to Vehicles, Generations, Variants, Powertrains, Engines, and Features."
+  - id: customer
+    name: Customer & Audience Domain
+    description: "Target customer segments, demographics, household context, usage patterns, budget behaviors, buying factors, and core needs."
+  - id: opinion
+    name: Opinion & Review Domain
+    description: "Granular opinions extracted from expert/owner reviews, aspect ratings, sentiment intensity, and purchase drivers/barriers."
+  - id: behavior
+    name: Intent & Search Behavior Domain
+    description: "Consumer search queries, purchase intent stages, and behavioral need signals."
+  - id: market
+    name: Market & Competition Domain
+    description: "Multi-dimensional competitor overlap matrices, market share, and geographic distribution."
+  - id: commercial
+    name: Commercial & Observation Domain
+    description: "Time-series sales observations, variant/fuel splits, and market-specific price observations."
+  - id: provenance
+    name: Provenance & Evidence Domain
+    description: "Sources, citation links, evidence nodes, and data confidence scoring."
+
+# ── NODE SCHEMAS (23 LABELS) ──────────────────────────────────────────────────
+nodes:
+  # --- PRODUCT DOMAIN ---
+  - label: Brand
+    domain: product
+    key_property: brand_id
+    properties:
+      brand_id: { type: string, required: true, description: "Canonical Brand ID (e.g. BRAND_MARUTI_SUZUKI)" }
+      name: { type: string, required: true, description: "Official Brand Name (e.g. Maruti Suzuki)" }
+      country_of_origin: { type: string, required: false, description: "Country of Headquarters (e.g. Japan / India)" }
+      parent_company: { type: string, required: false, description: "Parent Conglomerate (e.g. Suzuki Motor Corporation)" }
+
+  - label: VehicleModel
+    domain: product
+    key_property: vehicle_model_id
+    properties:
+      vehicle_model_id: { type: string, required: true, description: "Canonical Model ID (e.g. VEH_MARUTI_SUZUKI_DZIRE)" }
+      name: { type: string, required: true, description: "Commercial Model Name (e.g. Dzire, Wagon R, Baleno)" }
+      brand_id: { type: string, required: true, description: "Parent Brand ID" }
+      body_type: { type: string, required: true, description: "Body Style (e.g. Sedan, Hatchback, SUV, MPV)" }
+      segment_position: { type: string, required: false, description: "Market Segment (e.g. Compact Sedan, Tall-Boy Hatchback)" }
+      launch_year: { type: integer, required: false, description: "First Launch Year in Market" }
+      status: { type: string, required: true, enum: ["ACTIVE", "DISCONTINUED", "UPCOMING"], default: "ACTIVE" }
+      summary: { type: string, required: false, description: "High-level market positioning summary" }
+
+  - label: Generation
+    domain: product
+    key_property: generation_id
+    properties:
+      generation_id: { type: string, required: true, description: "Canonical Gen ID (e.g. GEN_DZIRE_4_2024)" }
+      vehicle_model_id: { type: string, required: true, description: "Parent Model ID" }
+      generation_number: { type: integer, required: true, description: "Generation sequence number (e.g. 4)" }
+      name: { type: string, required: true, description: "Generation Title (e.g. 4th Generation Dzire)" }
+      start_year: { type: integer, required: true, description: "Introduction Year" }
+      end_year: { type: integer, required: false, description: "End Year (if discontinued)" }
+      platform: { type: string, required: false, description: "Underlying architecture (e.g. Heartect)" }
+      is_facelift: { type: boolean, required: false, default: false }
+
+  - label: VehicleVariant
+    domain: product
+    key_property: variant_id
+    properties:
+      variant_id: { type: string, required: true, description: "Canonical Variant ID (e.g. VAR_DZIRE_ZXI_PLUS)" }
+      vehicle_model_id: { type: string, required: true, description: "Parent Model ID" }
+      name: { type: string, required: true, description: "Variant Trim Name (e.g. ZXi+)" }
+      trim_level: { type: string, required: false, description: "Trim Level (e.g. Base, Mid, Top)" }
+      fuel_type: { type: string, required: true, description: "Fuel Type (Petrol, CNG, Diesel, EV)" }
+      transmission: { type: string, required: true, description: "Transmission Type (5-MT, 5-AMT, CVT)" }
+      is_top_trim: { type: boolean, required: false, default: false }
+
+  - label: VehicleSegment
+    domain: product
+    key_property: segment_id
+    properties:
+      segment_id: { type: string, required: true, description: "Canonical Segment ID (e.g. SEG_COMPACT_SEDAN)" }
+      name: { type: string, required: true, description: "Segment Name (e.g. Sub-4m Compact Sedan)" }
+      category: { type: string, required: false, description: "A-Segment, B-Segment, C-Segment" }
+      description: { type: string, required: false, description: "Segment boundaries and typical dimensions" }
+
+  - label: Platform
+    domain: product
+    key_property: platform_id
+    properties:
+      platform_id: { type: string, required: true, description: "Canonical Platform ID (e.g. PLATFORM_HEARTECT)" }
+      name: { type: string, required: true, description: "Platform Name (e.g. Suzuki Heartect Platform)" }
+      architecture_type: { type: string, required: false, description: "Monocoque, Ladder Frame, EV Dedicated" }
+
+  - label: Powertrain
+    domain: product
+    key_property: powertrain_id
+    properties:
+      powertrain_id: { type: string, required: true, description: "Canonical Powertrain ID (e.g. PT_1_2L_Z12E_PETROL)" }
+      powertrain_type: { type: string, required: true, enum: ["ICE_PETROL", "ICE_DIESEL", "CNG", "STRONG_HYBRID", "MILD_HYBRID", "BEV"] }
+      claimed_efficiency: { type: string, required: false, description: "Certified Mileage (e.g. 24.79 kmpl)" }
+      efficiency_value: { type: float, required: false, description: "Numerical efficiency value" }
+      efficiency_unit: { type: string, required: false, description: "kmpl or km/kg" }
+
+  - label: Engine
+    domain: product
+    key_property: engine_id
+    properties:
+      engine_id: { type: string, required: true, description: "Canonical Engine ID (e.g. ENG_Z12E_1197CC)" }
+      code: { type: string, required: true, description: "Engine Code (e.g. Z12E, K12M, K12N)" }
+      displacement_cc: { type: integer, required: true, description: "Engine Displacement in cc (e.g. 1197)" }
+      cylinders: { type: integer, required: false, description: "Number of cylinders (e.g. 3 or 4)" }
+      max_power_hp: { type: float, required: false, description: "Peak Horsepower (e.g. 81.6)" }
+      max_power_rpm: { type: integer, required: false, description: "RPM at peak power (e.g. 5700)" }
+      max_torque_nm: { type: float, required: false, description: "Peak Torque in Nm (e.g. 111.7)" }
+      max_torque_rpm: { type: integer, required: false, description: "RPM at peak torque (e.g. 4300)" }
+      valves_per_cylinder: { type: integer, required: false, default: 4 }
+      emission_standard: { type: string, required: false, description: "BS6 Phase 2, Euro 6" }
+
+  - label: FeatureCategory
+    domain: product
+    key_property: category_id
+    properties:
+      category_id: { type: string, required: true, description: "Canonical Feature Category ID (e.g. FCAT_SAFETY_ACTIVE)" }
+      name: { type: string, required: true, description: "Category Name (e.g. Active Safety, Comfort, Infotainment)" }
+      pillar: { type: string, required: true, enum: ["SAFETY", "COMFORT_CONVENIENCE", "TECHNOLOGY_INFOTAINMENT", "PERFORMANCE_EFFICIENCY", "EXTERIOR_STYLING", "INTERIOR_SPACE"] }
+
+  - label: Feature
+    domain: product
+    key_property: feature_id
+    properties:
+      feature_id: { type: string, required: true, description: "Canonical Feature ID (e.g. FEAT_6_AIRBAGS_STANDARD)" }
+      name: { type: string, required: true, description: "Commercial Feature Name (e.g. 6 Airbags, 360-Degree Camera)" }
+      category_id: { type: string, required: true, description: "Parent Feature Category ID" }
+      description: { type: string, required: false, description: "Functional description of the feature" }
+      is_standard: { type: boolean, required: false, default: false }
+
+  # --- CUSTOMER DOMAIN ---
+  - label: CustomerSegment
+    domain: customer
+    key_property: segment_id
+    properties:
+      segment_id: { type: string, required: true, description: "Canonical Audience Segment ID (e.g. AUD_DZIRE_YOUNG_URBAN_PRO)" }
+      name: { type: string, required: true, description: "Segment Persona Name (e.g. Young Urban Professional)" }
+      description: { type: string, required: true, description: "Segment Persona Profile Description" }
+      age_band: { type: string, required: false, description: "Age Range (e.g. 24–32)" }
+      income_band_inr_annual: { type: string, required: false, description: "Annual Household Income (e.g. 7–15L)" }
+      gender_skew: { type: string, required: false, description: "balanced, male-leaning, female-leaning" }
+      location_type: { type: string, required: false, description: "metro, tier1, tier2, rural" }
+      urban_rural_split: { type: string, required: false, description: "e.g. 85/15" }
+      household_size: { type: string, required: false, description: "e.g. 1–2, 3–5" }
+      family_stage: { type: string, required: false, description: "young single, young couple, family with kids" }
+      first_car_buyer: { type: boolean, required: false }
+      primary_use: { type: string, required: false, description: "daily commute, family trips, ride-hailing" }
+      avg_daily_km: { type: integer, required: false }
+      budget_band_inr: { type: string, required: false, description: "e.g. 8–12L" }
+      finance_preferred: { type: boolean, required: false, default: true }
+      emi_sensitivity: { type: string, required: false, description: "high, medium, low" }
+      segment_size_estimate: { type: string, required: false, description: "large, medium, small" }
+      segment_weight_percent: { type: float, required: false, description: "0.0 to 1.0 share of target buyers" }
+
+  - label: Need
+    domain: customer
+    key_property: need_id
+    properties:
+      need_id: { type: string, required: true, description: "Canonical Need ID (e.g. NEED_LOW_RUNNING_COST)" }
+      name: { type: string, required: true, description: "Short Need Title (e.g. Low Running Cost, Highway Safety)" }
+      category: { type: string, required: false, description: "ECONOMY, SAFETY, STATUS, CONVENIENCE, SPACE, PERFORMANCE" }
+      description: { type: string, required: false, description: "Description of consumer psychological/practical need" }
+
+  - label: BuyingFactor
+    domain: customer
+    key_property: factor_id
+    properties:
+      factor_id: { type: string, required: true, description: "Canonical Buying Factor ID (e.g. BF_FUEL_EFFICIENCY)" }
+      name: { type: string, required: true, description: "Buying Factor Name (e.g. Fuel Efficiency, Cabin Space, Resale Value)" }
+      category: { type: string, required: false, description: "FINANCIAL, FUNCTIONAL, EMOTIONAL, BRAND" }
+
+  # --- OPINION & REVIEW DOMAIN ---
+  - label: Review
+    domain: opinion
+    key_property: review_id
+    properties:
+      review_id: { type: string, required: true, description: "Canonical Review ID (e.g. REV_DZIRE_EXPERT_AUTOCAR_2024)" }
+      source_name: { type: string, required: true, description: "Publication / Source (e.g. Autocar India, Team-BHP, CarDekho)" }
+      source_type: { type: string, required: true, enum: ["EXPERT_EDITORIAL", "OWNER_VERIFIED", "FORUM_COMMUNITY", "INDUSTRY_SURVEY"] }
+      overall_rating: { type: float, required: false, description: "1.0 to 5.0 score" }
+      review_date: { type: string, required: false, description: "ISO Date of publication" }
+      verdict: { type: string, required: false, description: "Editorial verdict or summary sentence" }
+
+  - label: Opinion
+    domain: opinion
+    key_property: opinion_id
+    properties:
+      opinion_id: { type: string, required: true, description: "Canonical Opinion ID (e.g. OP_DZIRE_MILEAGE_POSITIVE_01)" }
+      claim: { type: string, required: true, description: "Specific sentiment claim or observation text" }
+      sentiment: { type: string, required: true, enum: ["POSITIVE", "NEGATIVE", "NEUTRAL", "MIXED"] }
+      sentiment_score: { type: float, required: true, description: "-1.0 to +1.0 polarity score" }
+      intensity: { type: string, required: false, enum: ["HIGH", "MEDIUM", "LOW"] }
+      aspect_name: { type: string, required: true, description: "Target Aspect (e.g. Mileage, Build Quality, Ride Comfort)" }
+      is_purchase_driver: { type: boolean, required: false, default: false }
+      is_purchase_barrier: { type: boolean, required: false, default: false }
+
+  - label: Aspect
+    domain: opinion
+    key_property: aspect_id
+    properties:
+      aspect_id: { type: string, required: true, description: "Canonical Aspect ID (e.g. ASPECT_MILEAGE, ASPECT_SAFETY_NCAP)" }
+      name: { type: string, required: true, description: "Aspect Name (e.g. Mileage, Safety, NVH, Infotainment, Resale)" }
+      category: { type: string, required: false, description: "PERFORMANCE, SAFETY, COMFORT, OWNERSHIP, INFOTAINMENT" }
+
+  # --- BEHAVIOR & INTENT DOMAIN ---
+  - label: SearchQuery
+    domain: behavior
+    key_property: query_id
+    properties:
+      query_id: { type: string, required: true, description: "Canonical Query ID (e.g. QRY_DZIRE_CNG_MILEAGE)" }
+      query_text: { type: string, required: true, description: "Raw search query text" }
+      intent_type: { type: string, required: true, enum: ["DISCOVERY", "PRICE_CHECK", "FEATURE_CHECK", "COMPARISON", "REVIEW", "FINANCE_CHECK", "BOOKING", "EXCHANGE"] }
+      purchase_stage: { type: string, required: true, enum: ["AWARENESS", "CONSIDERATION", "EVALUATION", "PURCHASE", "POST_PURCHASE"] }
+      search_volume_tier: { type: string, required: false, enum: ["VERY_HIGH", "HIGH", "MEDIUM", "LOW"] }
+
+  - label: Intent
+    domain: behavior
+    key_property: intent_id
+    properties:
+      intent_id: { type: string, required: true, description: "Canonical Intent ID (e.g. INTENT_FEATURE_CHECK)" }
+      intent_type: { type: string, required: true, description: "Intent Classification Name" }
+      stage: { type: string, required: true, description: "Funnel Stage" }
+
+  # --- MARKET & COMMERCIAL DOMAIN ---
+  - label: Geography
+    domain: market
+    key_property: geography_id
+    properties:
+      geography_id: { type: string, required: true, description: "Canonical Geo ID (e.g. GEO_INDIA, GEO_IN_MAHARASHTRA)" }
+      name: { type: string, required: true, description: "Geographic Area Name (e.g. India, Maharashtra, Delhi NCR)" }
+      geo_level: { type: string, required: true, enum: ["COUNTRY", "STATE", "CITY", "METRO_REGION"] }
+      country_code: { type: string, required: false, default: "IN" }
+
+  - label: SalesObservation
+    domain: commercial
+    key_property: sales_obs_id
+    properties:
+      sales_obs_id: { type: string, required: true, description: "Canonical Sales Observation ID (e.g. SOBS_DZIRE_2024_ANNUAL)" }
+      period_type: { type: string, required: true, enum: ["ANNUAL", "MONTHLY", "QUARTERLY"] }
+      period_value: { type: string, required: true, description: "e.g. 2024, 2024-01" }
+      units_sold: { type: integer, required: true, description: "Recorded units sold" }
+      market_share_percent: { type: float, required: false, description: "Segment / Industry market share %" }
+      yoy_growth_percent: { type: float, required: false, description: "Year-over-year change %" }
+      confidence_level: { type: string, required: false, enum: ["OFFICIAL_SIAM", "INDUSTRY_ESTIMATE", "FADA_REGISTRATION"] }
+
+  - label: PriceObservation
+    domain: commercial
+    key_property: price_obs_id
+    properties:
+      price_obs_id: { type: string, required: true, description: "Canonical Price Obs ID (e.g. POBS_DZIRE_ZXI_PLUS_DELHI_2024)" }
+      date: { type: string, required: true, description: "ISO Date of observation" }
+      ex_showroom_inr: { type: integer, required: true, description: "Ex-Showroom Price in INR" }
+      on_road_inr: { type: integer, required: false, description: "Estimated On-Road Price in INR" }
+      currency: { type: string, required: true, default: "INR" }
+      market_region: { type: string, required: false, default: "Delhi Ex-Showroom" }
+
+  # --- PROVENANCE & EVIDENCE DOMAIN ---
+  - label: Source
+    domain: provenance
+    key_property: source_id
+    properties:
+      source_id: { type: string, required: true, description: "Canonical Source ID (e.g. SRC_AUTOCAR_INDIA, SRC_SIAM)" }
+      name: { type: string, required: true, description: "Publisher or Organization Name" }
+      source_type: { type: string, required: true, enum: ["AUTOMOTIVE_PORTAL", "GOVERNMENT_SIAM_FADA", "OEM_OFFICIAL", "COMMUNITY_FORUM", "SEARCH_DATA"] }
+      url: { type: string, required: false, description: "Web reference URL" }
+
+  - label: Evidence
+    domain: provenance
+    key_property: evidence_id
+    properties:
+      evidence_id: { type: string, required: true, description: "Canonical Evidence ID (e.g. EVID_GNCAP_5STAR_TEST_2024)" }
+      claim_text: { type: string, required: true, description: "Extracted fact snippet or citation text" }
+      confidence_score: { type: float, required: true, description: "0.0 to 1.0 confidence score" }
+      observed_date: { type: string, required: false }
+
+# ── RELATIONSHIP SCHEMAS (25 TYPES) ──────────────────────────────────────────
+relationships:
+  # Product Hierarchy
+  - type: PRODUCES
+    start_label: Brand
+    end_label: VehicleModel
+    description: "Brand manufacturers / distributes the Vehicle Model."
+
+  - type: HAS_GENERATION
+    start_label: VehicleModel
+    end_label: Generation
+    description: "Vehicle Model has an evolutionary Generation/Facelift."
+
+  - type: HAS_VARIANT
+    start_label: VehicleModel
+    end_label: VehicleVariant
+    description: "Vehicle Model is sold in a specific Variant Trim."
+
+  - type: BELONGS_TO
+    start_label: VehicleModel
+    end_label: VehicleSegment
+    description: "Vehicle Model competes within a Vehicle Segment."
+
+  - type: USES_PLATFORM
+    start_label: VehicleModel
+    end_label: Platform
+    description: "Vehicle Model is built upon an architectural Platform."
+
+  - type: HAS_POWERTRAIN
+    start_label: VehicleModel
+    end_label: Powertrain
+    description: "Vehicle Model supports a specific Powertrain configuration."
+
+  - type: USES_ENGINE
+    start_label: VehicleVariant
+    end_label: Engine
+    description: "Variant is equipped with a specific Engine."
+
+  - type: USES_POWERTRAIN
+    start_label: VehicleVariant
+    end_label: Powertrain
+    description: "Variant uses a specific Powertrain setup."
+
+  - type: HAS_FEATURE
+    start_label: VehicleVariant
+    end_label: Feature
+    properties:
+      is_standard: { type: boolean, default: true }
+      is_optional: { type: boolean, default: false }
+    description: "Variant is equipped with a Feature."
+
+  - type: CONTAINS_FEATURE
+    start_label: FeatureCategory
+    end_label: Feature
+    description: "Feature Category groups a Feature."
+
+  - type: SATISFIES
+    start_label: Feature
+    end_label: Need
+    properties:
+      efficacy_score: { type: float, description: "0.0 to 1.0 satisfaction score" }
+    description: "Feature satisfies a Consumer Need."
+
+  # Customer Domain Links
+  - type: PRIORITIZES
+    start_label: CustomerSegment
+    end_label: BuyingFactor
+    properties:
+      importance_weight: { type: float, required: true, description: "0.0 to 1.0 importance for this audience" }
+      rank: { type: integer, required: false, description: "Relative priority rank 1, 2, 3..." }
+    description: "Customer Segment prioritizes a Buying Factor."
+
+  - type: HAS_NEED
+    start_label: CustomerSegment
+    end_label: Need
+    properties:
+      intensity: { type: string, enum: ["PRIMARY", "SECONDARY", "TERTIARY"] }
+    description: "Customer Segment experiences a Need."
+
+  - type: CONSIDERS
+    start_label: CustomerSegment
+    end_label: VehicleModel
+    properties:
+      fit_score: { type: float, description: "0.0 to 1.0 fit score" }
+      is_primary_target: { type: boolean, default: true }
+    description: "Customer Segment actively considers a Vehicle Model."
+
+  - type: PREFERS
+    start_label: CustomerSegment
+    end_label: Powertrain
+    description: "Customer Segment prefers a Powertrain option (e.g. CNG for low running cost)."
+
+  - type: LOCATED_IN
+    start_label: CustomerSegment
+    end_label: Geography
+    properties:
+      concentration_percent: { type: float, description: "Share of segment in this geography" }
+    description: "Customer Segment geographical concentration."
+
+  # Competitor Dynamics
+  - type: COMPETES_WITH
+    start_label: VehicleModel
+    end_label: VehicleModel
+    properties:
+      competition_score: { type: float, required: true, description: "0.0 to 1.0 aggregate competition intensity" }
+      competition_tier: { type: string, required: true, enum: ["PRIMARY", "SECONDARY", "CROSS_SEGMENT"] }
+      price_overlap: { type: float, required: false, description: "0.0 to 1.0 price band overlap" }
+      segment_overlap: { type: float, required: false, description: "0.0 to 1.0 segment overlap" }
+      powertrain_overlap: { type: float, required: false, description: "0.0 to 1.0 powertrain overlap" }
+      feature_overlap: { type: float, required: false, description: "0.0 to 1.0 feature overlap" }
+      customer_overlap: { type: float, required: false, description: "0.0 to 1.0 audience overlap" }
+      key_battleground: { type: string, required: false, description: "e.g. Mileage vs Space vs Safety" }
+    description: "Multi-dimensional competitive relationship between two Vehicle Models."
+
+  # Reviews and Opinions
+  - type: ABOUT
+    start_label: Review
+    end_label: VehicleModel
+    description: "Review assesses a Vehicle Model."
+
+  - type: WRITTEN_BY
+    start_label: Review
+    end_label: Source
+    description: "Review was published by a Source."
+
+  - type: CONTAINS
+    start_label: Review
+    end_label: Opinion
+    description: "Review contains an extracted granular Opinion."
+
+  - type: ABOUT_ASPECT
+    start_label: Opinion
+    end_label: Aspect
+    description: "Opinion is targeted at a specific Aspect."
+
+  - type: EXPRESSED_BY
+    start_label: Opinion
+    end_label: CustomerSegment
+    description: "Opinion reflects the sentiment of a specific Customer Segment."
+
+  - type: IMPACTS_PURCHASE_AS
+    start_label: Opinion
+    end_label: BuyingFactor
+    properties:
+      role: { type: string, required: true, enum: ["DRIVER", "BARRIER", "NEUTRAL"] }
+      impact_weight: { type: float, description: "0.0 to 1.0 conversion impact" }
+    description: "Opinion acts as a conversion purchase driver or purchase barrier."
+
+  # Search Behavior
+  - type: TARGETS
+    start_label: SearchQuery
+    end_label: VehicleModel
+    description: "Search query targets a specific Vehicle Model."
+
+  - type: HAS_INTENT
+    start_label: SearchQuery
+    end_label: Intent
+    description: "Search query demonstrates a specific purchase intent."
+
+  - type: EXPRESSES_NEED
+    start_label: SearchQuery
+    end_label: Need
+    description: "Search query expresses an underlying consumer need."
+
+  - type: ASSOCIATED_WITH
+    start_label: SearchQuery
+    end_label: CustomerSegment
+    description: "Search query is typical of a Customer Segment."
+
+  # Commercial & Observations
+  - type: HAS_SALES_OBSERVATION
+    start_label: VehicleModel
+    end_label: SalesObservation
+    description: "Vehicle Model has an empirical sales volume observation."
+
+  - type: HAS_PRICE_OBSERVATION
+    start_label: VehicleVariant
+    end_label: PriceObservation
+    description: "Variant has an empirical price observation."
+
+  - type: IN_GEOGRAPHY
+    start_label: SalesObservation
+    end_label: Geography
+    description: "Sales observation was recorded in a Geography."
+
+  - type: IN_MARKET
+    start_label: PriceObservation
+    end_label: Geography
+    description: "Price observation applies to a Geography."
+
+  - type: SUPPORTED_BY
+    start_label: Opinion
+    end_label: Evidence
+    description: "Opinion or observation is supported by Evidence."

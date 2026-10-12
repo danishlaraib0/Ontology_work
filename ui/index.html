@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Intelligence World Model</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="background-mesh"></div>
+
+    <header class="glass-header">
+        <h1>AutoKnowledge <span>Graph AI</span></h1>
+        <div class="actions">
+            <button id="pipelineStatusBtn" class="btn-secondary" title="View ingestion pipeline activity">
+                <span class="status-pulse-dot idle" id="pipelineDot"></span>
+                <span id="pipelineStatusText">Pipeline Idle</span>
+            </button>
+            <button id="addCarBtn" class="btn-primary">+ Add Vehicle</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Visualization Area -->
+        <div class="visualization-panel glass-panel">
+            <h2>Graph Traversal & Logic</h2>
+            <div id="logicFlow" class="logic-flow">
+                <div class="placeholder">Query the engine to visualize traversal...</div>
+            </div>
+        </div>
+
+        <!-- Result Area -->
+        <div class="result-panel glass-panel">
+            <h2>Intelligence Report</h2>
+            <div id="reportContent" class="markdown-body">
+                <div class="placeholder">Awaiting intelligence query...</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Query Input Area -->
+    <div class="query-dock glass-panel">
+        <form id="queryForm">
+            <div class="input-wrapper">
+                <span class="slash-hint">Press <strong>/</strong> to focus</span>
+                <input type="text" id="queryInput" placeholder="Ask about market changes, competitive gaps, or buyer behavior..." autocomplete="off">
+                <button type="submit" id="submitBtn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Car Modal with Live Status Tracker -->
+    <div id="addCarModal" class="modal">
+        <div class="modal-content glass-panel" id="modalCard">
+            <span class="close" id="closeAddCarModal">&times;</span>
+            
+            <!-- State 1: Input Form -->
+            <div id="addCarFormContainer">
+                <h2>Ingest New Vehicle</h2>
+                <p class="modal-subtitle">Autonomous 12-layer data extraction, taxonomy synthesis, and Neo4j graph integration.</p>
+                <form id="addCarForm">
+                    <div class="form-group">
+                        <label for="makeInput">Automaker / Brand</label>
+                        <input type="text" id="makeInput" placeholder="e.g. Tata, Mahindra, Hyundai" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelInput">Vehicle Model</label>
+                        <input type="text" id="modelInput" placeholder="e.g. Punch, Thar, Creta" required autocomplete="off">
+                    </div>
+                    <div class="quick-chips">
+                        <span>Quick picks:</span>
+                        <button type="button" class="chip-btn" data-make="Tata" data-model="Punch">Tata Punch</button>
+                        <button type="button" class="chip-btn" data-make="Mahindra" data-model="Thar">Mahindra Thar</button>
+                        <button type="button" class="chip-btn" data-make="Kia" data-model="Seltos">Kia Seltos</button>
+                    </div>
+                    <button type="submit" id="startIngestBtn" class="btn-primary btn-block">🚀 Start Autonomous Ingestion</button>
+                </form>
+            </div>
+
+            <!-- State 2: Live Ingestion Progress & Status -->
+            <div id="ingestProgressContainer" style="display: none;">
+                <div class="job-header">
+                    <div>
+                        <h2 id="jobVehicleTitle">Ingesting Vehicle</h2>
+                        <span id="jobVehicleSubtitle" class="modal-subtitle">Autonomous Knowledge Pipeline</span>
+                    </div>
+                    <span id="jobStatusBadge" class="status-badge running">RUNNING</span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-section">
+                    <div class="progress-bar-track">
+                        <div id="jobProgressBar" class="progress-bar-fill" style="width: 5%;"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span id="jobStepLabel">Layer 1/12: Vehicle Master</span>
+                        <span id="jobProgressPct" class="progress-pct">5%</span>
+                    </div>
+                </div>
+
+                <!-- Active Step Card -->
+                <div class="active-step-card">
+                    <div id="stepSpinner" class="spinner-circle"></div>
+                    <div class="step-info">
+                        <div id="stepName" class="step-title">Initializing Pipeline...</div>
+                        <div id="stepDesc" class="step-sub">Connecting to sources & validating schema</div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid (Visible on Completion) -->
+                <div id="jobStatsGrid" class="stats-grid" style="display: none;">
+                    <div class="stat-card">
+                        <span class="stat-num" id="statNodes">+0</span>
+                        <span class="stat-lbl">Nodes Merged</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num" id="statRels">+0</span>
+                        <span class="stat-lbl">Relationships</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num" id="statLayers">12 / 12</span>
+                        <span class="stat-lbl">Layers Built</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num stat-success" id="statVerified">Verified</span>
+                        <span class="stat-lbl">Neo4j Graph</span>
+                    </div>
+                </div>
+
+                <!-- Live Activity Log Terminal -->
+                <div class="terminal-wrapper">
+                    <div class="terminal-bar">
+                        <span>LIVE PIPELINE LOGS</span>
+                        <span id="logCounter" class="log-count">0 steps</span>
+                    </div>
+                    <div id="terminalLogs" class="terminal-logs"></div>
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="modal-actions">
+                    <button id="queryNewCarBtn" class="btn-primary" style="display: none;">🎯 Query this Car Now</button>
+                    <button id="ingestAnotherBtn" class="btn-secondary" style="display: none;">+ Add Another</button>
+                    <button id="minimizeBtn" class="btn-secondary">Run in Background</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ingestion History / Jobs Drawer Modal -->
+    <div id="jobsModal" class="modal">
+        <div class="modal-content glass-panel" style="max-width: 600px;">
+            <span class="close" id="closeJobsModal">&times;</span>
+            <h2>Vehicle Ingestion Pipeline</h2>
+            <p class="modal-subtitle">Track recent vehicle datasets imported into the Automotive World Model.</p>
+            <div id="jobsListContainer" class="jobs-list">
+                <div class="placeholder">Loading ingestion jobs...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

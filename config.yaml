@@ -1,0 +1,43 @@
+llm:
+  # Primary model: Qwen 3.8-27B on Groq
+  primary:
+    provider: "groq"
+    model: "qwen/qwen3.8-27b"
+    temperature_summarize: 0.2
+    temperature_generate: 0.5
+    temperature_update: 0.2
+    temperature_review: 0.0
+    top_p: 0.95
+    max_completion_tokens: 2048
+    reasoning_effort: "default"
+
+  # Fallback model: GPT-OSS-20B on Groq
+  fallback:
+    provider: "groq"
+    model: "openai/gpt-oss-20b"
+    temperature_summarize: 0.2
+    temperature_generate: 0.5
+    temperature_update: 0.2
+    temperature_review: 0.0
+    top_p: 0.95
+    max_completion_tokens: 2048
+
+  # Custom Ollama Cloudflare Endpoint
+  ollama_custom:
+    provider: "custom_openai"
+    base_url: "https://shepherd-prisoner-carbon-respectively.trycloudflare.com/v1"
+    model: "qwen3.8-27b-uncensored-mtp"
+    max_completion_tokens: 2048
+    temperature: 0.7
+
+  # Rate limits (apply to BOTH models combined)
+  rate_limits:
+    requests_per_minute: 30
+    requests_per_day: 1000
+    tokens_per_minute: 8000
+    tokens_per_day: 200000
+    batch_size: 10
+    delay_between_requests: 2.5
+    delay_between_batches: 25
+    max_retries: 3
+    retry_delay: 10

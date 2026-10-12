@@ -1,0 +1,467 @@
+data_collector:
+  vehicle_master: "You are an automotive data expert. Collect the complete Vehicle\
+    \ Master record for:\n\nBrand: {brand}\nModel: {model}\nCountry: India\n\nSearch\
+    \ and return a JSON object with EXACTLY these fields:\n\n```json\n{{\n  \"vehicle_id\"\
+    : \"auto-generated slug like MARUTISUZUKI-DZIRE-2024\",\n  \"brand\": \"\",\n\
+    \  \"model\": \"\",\n  \"generation\": \"e.g. Gen 3 (2024–present)\",\n  \"variants\"\
+    : [\"LXI\", \"VXI\", \"ZXI\", \"ZXI+\"],\n  \"body_type\": \"Sedan / SUV / Hatchback\
+    \ / MPV etc.\",\n  \"segment\": \"Entry Sedan / Compact Sedan / Mid-Size SUV etc.\"\
+    ,\n  \"fuel_types\": [\"Petrol\", \"CNG\", \"Diesel\", \"EV\"],\n  \"powertrains\"\
+    : [\"ICE\", \"CNG\", \"Hybrid\", \"EV\"],\n  \"launch_date\": \"YYYY-MM\",\n \
+    \ \"discontinued_date\": null,\n  \"country\": \"India\",\n  \"price_range_inr\"\
+    : {{\"min\": 0, \"max\": 0}},\n  \"manufacturing_plant\": \"\",\n  \"platform\"\
+    : \"\",\n  \"competitors_primary\": [],\n  \"segment_position\": \"entry / mid\
+    \ / premium\"\n}}\n```\n\nBe specific, factual, and accurate. Use Google Search\
+    \ to verify current information.\nReturn ONLY the JSON, no markdown fences."
+  spec_master: "You are an automotive specifications expert. Extract complete technical\
+    \ specifications for:\n\nBrand: {brand}\nModel: {model}\nCountry: India\n\nReturn\
+    \ a JSON object with these sections:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\"\
+    ,\n  \"engine_options\": [\n    {{\n      \"engine_code\": \"\",\n      \"displacement_cc\"\
+    : 0,\n      \"fuel_type\": \"\",\n      \"power_hp\": 0,\n      \"torque_nm\"\
+    : 0,\n      \"transmission\": [\"Manual 5-speed\", \"AMT\"],\n      \"mileage_kmpl\"\
+    : 0,\n      \"emission_norm\": \"BS6 Phase 2\"\n    }}\n  ],\n  \"dimensions\"\
+    : {{\n    \"length_mm\": 0,\n    \"width_mm\": 0,\n    \"height_mm\": 0,\n   \
+    \ \"wheelbase_mm\": 0,\n    \"boot_space_litres\": 0,\n    \"ground_clearance_mm\"\
+    : 0,\n    \"kerb_weight_kg\": 0,\n    \"fuel_tank_litres\": 0,\n    \"seating_capacity\"\
+    : 5\n  }},\n  \"safety\": {{\n    \"ncap_rating\": \"\",\n    \"airbags\": 0,\n\
+    \    \"abs\": true,\n    \"esc\": false,\n    \"isofix\": true,\n    \"rear_parking_sensors\"\
+    : true,\n    \"rear_camera\": true\n  }},\n  \"features_by_variant\": {{\n   \
+    \ \"LXI\": [],\n    \"VXI\": [],\n    \"ZXI\": [],\n    \"ZXI+\": []\n  }},\n\
+    \  \"connectivity\": {{\n    \"infotainment_size_inch\": 0,\n    \"apple_carplay\"\
+    : false,\n    \"android_auto\": false,\n    \"connected_car\": false,\n    \"\
+    voice_control\": false,\n    \"ota_updates\": false\n  }},\n  \"comfort\": {{\n\
+    \    \"sunroof\": false,\n    \"ventilated_seats\": false,\n    \"auto_ac\": false,\n\
+    \    \"rear_ac_vent\": false,\n    \"push_button_start\": false,\n    \"cruise_control\"\
+    : false\n  }},\n  \"warranty\": {{\n    \"years\": 0,\n    \"km\": 0,\n    \"\
+    battery_warranty\": null\n  }}\n}}\n```\n\nUse latest {brand} {model} data from\
+    \ manufacturer website and automotive portals.\nReturn ONLY the JSON, no markdown\
+    \ fences."
+  feature_taxonomy: "You are an automotive product ontology expert. For the {brand}\
+    \ {model}:\n\nBuild a structured Feature Taxonomy — categorise ALL features of\
+    \ this vehicle into\nthe hierarchy below. For each feature, also note which variants\
+    \ include it.\n\nReturn a JSON object:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\"\
+    ,\n  \"taxonomy\": {{\n    \"Safety\": {{\n      \"Passive Safety\": [\"Dual Airbags\"\
+    , \"6 Airbags\", ...],\n      \"Active Safety\": [\"ABS+EBD\", \"ESC\", \"Hill\
+    \ Hold\", ...],\n      \"ADAS\": [\"Lane Departure Warning\", \"Automatic Emergency\
+    \ Braking\", ...]\n    }},\n    \"Comfort\": {{\n      \"Climate\": [\"Manual\
+    \ AC\", \"Auto Climate Control\", \"Rear AC Vents\"],\n      \"Seating\": [\"\
+    Fabric Seats\", \"Leatherette\", \"Ventilated Seats\"],\n      \"Ergonomics\"\
+    : [\"Tilt Steering\", \"Height-adjustable Driver Seat\"]\n    }},\n    \"Technology\"\
+    : {{\n      \"Infotainment\": [\"7-inch Touchscreen\", \"9-inch Touchscreen\"\
+    ],\n      \"Connectivity\": [\"Apple CarPlay\", \"Android Auto\", \"Connected\
+    \ Car App\"],\n      \"Instruments\": [\"Digital Cluster\", \"Analog Cluster\"\
+    , \"MID Display\"]\n    }},\n    \"Convenience\": {{\n      \"Entry\": [\"Remote\
+    \ Keyless Entry\", \"Smart Key\", \"Push Button Start\"],\n      \"Visibility\"\
+    : [\"Rear Camera\", \"360 Camera\", \"Parking Sensors\"],\n      \"Lighting\"\
+    : [\"Halogen\", \"LED DRL\", \"Full LED\", \"Auto Headlamps\"]\n    }},\n    \"\
+    Performance\": {{\n      \"Powertrain\": [\"Manual\", \"AMT\", \"DCT\", \"CVT\"\
+    ],\n      \"Drive Modes\": [\"Eco\", \"Sport\", \"Normal\"],\n      \"Suspension\"\
+    : []\n    }},\n    \"Exterior\": [],\n    \"Interior\": []\n  }},\n  \"feature_to_variant_map\"\
+    : {{\n    \"Feature Name\": [\"ZXI\", \"ZXI+\"]\n  }},\n  \"key_differentiating_features\"\
+    : []\n}}\n```\n\nReturn ONLY the JSON."
+  competitor_master: "You are an automotive market intelligence analyst for the Indian\
+    \ market.\n\nAnalyse the competitive landscape for: {brand} {model}\n\nReturn\
+    \ a JSON object:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\",\n  \"segment\"\
+    : \"\",\n  \"competitors\": [\n    {{\n      \"brand\": \"\",\n      \"model\"\
+    : \"\",\n      \"variant_range\": [\"Base\", \"Top\"],\n      \"price_range_inr\"\
+    : {{\"min\": 0, \"max\": 0}},\n      \"overlap_scores\": {{\n        \"price_overlap\"\
+    : 0.0,\n        \"segment_overlap\": 0.0,\n        \"body_type_overlap\": 0.0,\n\
+    \        \"powertrain_overlap\": 0.0,\n        \"feature_overlap\": 0.0,\n   \
+    \     \"customer_overlap\": 0.0,\n        \"competition_score\": 0.0\n      }},\n\
+    \      \"competition_tier\": \"primary / secondary / aspirational\",\n      \"\
+    key_differentiators\": [],\n      \"where_it_wins\": [],\n      \"where_it_loses\"\
+    : []\n    }}\n  ],\n  \"market_position\": {{\n    \"segment_rank\": 1,\n    \"\
+    monthly_sales_estimate\": 0,\n    \"market_share_percent\": 0.0,\n    \"yoy_growth_percent\"\
+    : 0.0,\n    \"strongest_geography\": [],\n    \"weakest_geography\": []\n  }},\n\
+    \  \"substitute_categories\": [\"Used Cars\", \"2-Wheelers\", \"Motorcycles\"\
+    ]\n}}\n```\n\nUse Google Search to get current 2024–2025 sales data and competitor\
+    \ prices.\nReturn ONLY the JSON."
+  audience_segments: "You are a customer insights expert specialising in the Indian\
+    \ automotive market.\n\nIdentify the key customer segments that buy the {brand}\
+    \ {model}.\n\nReturn a JSON array of segments:\n\n```json\n[\n  {{\n    \"segment_id\"\
+    : \"S001\",\n    \"segment_name\": \"Young Urban Professional\",\n    \"description\"\
+    : \"\",\n    \"demographics\": {{\n      \"age_band\": \"22–32\",\n      \"income_band_inr_annual\"\
+    : \"5–12L\",\n      \"gender_skew\": \"male-leaning / female-leaning / balanced\"\
+    ,\n      \"occupation\": [\"IT Professional\", \"Government Employee\"],\n   \
+    \   \"education\": \"Graduate+\"\n    }},\n    \"geography\": {{\n      \"location_type\"\
+    : \"metro / tier1 / tier2 / rural\",\n      \"top_states\": [],\n      \"urban_rural_split\"\
+    : \"80/20\"\n    }},\n    \"household\": {{\n      \"household_size\": \"2–4\"\
+    ,\n      \"family_stage\": \"young single / young couple / family with kids\"\n\
+    \    }},\n    \"vehicle_context\": {{\n      \"first_car_buyer\": true,\n    \
+    \  \"current_vehicle\": [\"2-Wheeler\", \"Old Hatchback\"],\n      \"replacement_cycle_years\"\
+    : 5,\n      \"preferred_body_type\": \"Sedan\",\n      \"preferred_powertrain\"\
+    : [\"Petrol\", \"CNG\"]\n    }},\n    \"usage_pattern\": {{\n      \"primary_use\"\
+    : \"daily commute\",\n      \"city_highway_split\": \"90/10\",\n      \"avg_daily_km\"\
+    : 40,\n      \"ride_hailing_usage\": \"high / medium / low\"\n    }},\n    \"\
+    budget_behaviour\": {{\n      \"budget_band_inr\": \"6–10L\",\n      \"finance_preferred\"\
+    : true,\n      \"emi_sensitivity\": \"high\",\n      \"down_payment_capacity\"\
+    : \"10–15%\"\n    }},\n    \"purchase_drivers\": [],\n    \"purchase_barriers\"\
+    : [],\n    \"segment_size_estimate\": \"large / medium / small\",\n    \"segment_weight_percent\"\
+    : 0.0\n  }}\n]\n```\n\nCreate 4–6 distinct, realistic segments based on actual\
+    \ Indian market research.\nReturn ONLY the JSON array."
+  buying_factors: "You are an automotive consumer behaviour researcher.\n\nFor the\
+    \ {brand} {model} in the Indian market, identify the key buying factors\nand their\
+    \ relative importance for each customer segment.\n\nReturn a JSON object:\n\n\
+    ```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\",\n  \"buying_factors\": [\n  \
+    \  {{\n      \"factor\": \"Fuel Efficiency / Mileage\",\n      \"category\": \"\
+    Economics\",\n      \"importance_score_overall\": 0.0,\n      \"by_segment\":\
+    \ {{\n        \"S001\": 0.0,\n        \"S002\": 0.0\n      }},\n      \"source\"\
+    : \"industry survey / web review analysis / forum analysis\",\n      \"evidence\"\
+    : \"e.g. 'mileage' mentioned in 68% of owner reviews\"\n    }}\n  ],\n  \"top_purchase_drivers\"\
+    : [],\n  \"top_purchase_barriers\": [],\n  \"unmet_needs\": [],\n  \"feature_wish_list\"\
+    : []\n}}\n```\n\nInclude factors like: Price, Mileage/CNG economy, Brand reliability,\
+    \ Boot space,\nSafety, Comfort, Resale value, Service network, EMI affordability,\n\
+    Feature-for-money, Ground clearance, etc.\n\nScore from 0.0 to 1.0 (1.0 = most\
+    \ important).\nReturn ONLY the JSON."
+  reviews: "You are an automotive review analyst.\n\nSearch and summarise owner and\
+    \ expert reviews for the {brand} {model} in India.\n\nCollect from: CarDekho,\
+    \ CarWale, Zigwheels, Team-BHP, MouthShut, Google Reviews,\nYouTube reviews, automotive\
+    \ journalist reviews.\n\nReturn a JSON object:\n\n```json\n{{\n  \"vehicle_id\"\
+    : \"{vehicle_id}\",\n  \"review_summary\": {{\n    \"total_reviews_estimated\"\
+    : 0,\n    \"avg_rating\": 0.0,\n    \"rating_breakdown\": {{\n      \"5_star_percent\"\
+    : 0,\n      \"4_star_percent\": 0,\n      \"3_star_percent\": 0,\n      \"2_star_percent\"\
+    : 0,\n      \"1_star_percent\": 0\n    }}\n  }},\n  \"top_positive_themes\": [\n\
+    \    {{\n      \"theme\": \"\",\n      \"frequency\": \"very common / common /\
+    \ occasional\",\n      \"example_quote\": \"\",\n      \"aspect\": \"\"\n    }}\n\
+    \  ],\n  \"top_negative_themes\": [\n    {{\n      \"theme\": \"\",\n      \"\
+    frequency\": \"very common / common / occasional\",\n      \"example_quote\":\
+    \ \"\",\n      \"aspect\": \"\"\n    }}\n  ],\n  \"expert_verdicts\": [\n    {{\n\
+    \      \"source\": \"CarDekho / Autocar India / Team-BHP\",\n      \"verdict\"\
+    : \"\",\n      \"pros\": [],\n      \"cons\": [],\n      \"rating\": 0.0,\n  \
+    \    \"recommended_for\": \"\",\n      \"not_recommended_for\": \"\"\n    }}\n\
+    \  ],\n  \"owner_satisfaction\": {{\n    \"would_recommend_percent\": 0,\n   \
+    \ \"repurchase_intent_percent\": 0,\n    \"most_loved_feature\": \"\",\n    \"\
+    most_complained_feature\": \"\"\n  }}\n}}\n```\n\nReturn ONLY the JSON."
+  opinion_dataset: "You are a sentiment analysis and NLP expert specialising in automotive\
+    \ reviews.\n\nFor the {brand} {model}, extract aspect-level sentiment from reviews\
+    \ and public discussions.\n\nReturn a JSON array of opinion records:\n\n```json\n\
+    [\n  {{\n    \"opinion_id\": \"OP001\",\n    \"vehicle_id\": \"{vehicle_id}\"\
+    ,\n    \"source_type\": \"owner_review / expert_review / forum / social_media\"\
+    ,\n    \"source_name\": \"CarDekho / Team-BHP / Reddit\",\n    \"aspect\": \"\
+    Mileage\",\n    \"aspect_category\": \"Economics / Safety / Comfort / Technology\
+    \ / Convenience / Performance / Design\",\n    \"sentiment\": \"positive / negative\
+    \ / neutral / mixed\",\n    \"sentiment_score\": 0.0,\n    \"intensity\": \"high\
+    \ / medium / low\",\n    \"claim\": \"Exact representative quote or paraphrased\
+    \ claim\",\n    \"date_approx\": \"2024-Q3\",\n    \"audience_segment\": \"Urban\
+    \ commuter / Family buyer / Young professional\",\n    \"is_purchase_driver\"\
+    : true,\n    \"is_purchase_barrier\": false,\n    \"importance_weight\": 0.0\n\
+    \  }}\n]\n```\n\nCreate 20–30 representative opinion records covering all major\
+    \ aspects:\nMileage, Boot space, Interior quality, Ride comfort, NVH/noise,\n\
+    Infotainment, Safety, Service, Resale, Price-value, CNG performance,\nBuild quality,\
+    \ Steering feel, Braking, Headroom/legroom.\n\nReturn ONLY the JSON array."
+  search_intent: "You are a search intelligence and intent modelling expert for the\
+    \ Indian automotive market.\n\nFor the {brand} {model}, analyse common search\
+    \ queries, questions, and purchase intents.\n\nReturn a JSON object:\n\n```json\n\
+    {{\n  \"vehicle_id\": \"{vehicle_id}\",\n  \"search_queries\": [\n    {{\n   \
+    \   \"query\": \"maruti dzire price 2024\",\n      \"intent_type\": \"PRICE_CHECK\
+    \ / COMPARISON / FEATURE_CHECK / REVIEW / DISCOVERY / DEALER\",\n      \"search_volume_tier\"\
+    : \"very high / high / medium / low\",\n      \"purchase_stage\": \"awareness\
+    \ / consideration / intent / decision\",\n      \"implied_need\": \"\",\n    \
+    \  \"implied_segment\": \"\"\n    }}\n  ],\n  \"common_comparisons\": [\n    {{\n\
+    \      \"compared_with\": \"Honda Amaze\",\n      \"comparison_query\": \"maruti\
+    \ dzire vs honda amaze\",\n      \"decision_factor\": \"Price / Mileage / Space\
+    \ / Features\"\n    }}\n  ],\n  \"faq_topics\": [\n    {{\n      \"question\"\
+    : \"What is the mileage of Maruti Dzire CNG?\",\n      \"category\": \"Specifications\
+    \ / Ownership / Comparison / Pricing\",\n      \"answer_summary\": \"\"\n    }}\n\
+    \  ],\n  \"purchase_intent_signals\": {{\n    \"peak_search_months\": [],\n  \
+    \  \"price_alert_keywords\": [],\n    \"high_intent_queries\": [],\n    \"objection_signals\"\
+    : []\n  }},\n  \"customer_language_map\": {{\n    \"what_they_search_for\": [],\n\
+    \    \"what_they_complain_about\": [],\n    \"what_they_praise\": [],\n    \"\
+    what_confuses_them\": []\n  }}\n}}\n```\n\nReturn ONLY the JSON."
+  sales_data: "You are an automotive market research analyst for India.\n\nResearch\
+    \ publicly available sales, registration, and market share data for:\n{brand}\
+    \ {model}\n\nReturn a JSON object:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\"\
+    ,\n  \"monthly_sales\": [\n    {{\n      \"month\": \"2024-01\",\n      \"units_sold\"\
+    : 0,\n      \"yoy_change_percent\": 0.0,\n      \"source\": \"SIAM / FADA / industry\
+    \ report / CarDekho estimate\"\n    }}\n  ],\n  \"annual_summary\": [\n    {{\n\
+    \      \"year\": 2024,\n      \"total_units\": 0,\n      \"segment_rank\": 1,\n\
+    \      \"market_share_in_segment_percent\": 0.0,\n      \"yoy_growth_percent\"\
+    : 0.0\n    }}\n  ],\n  \"geographic_demand\": [\n    {{\n      \"state\": \"\"\
+    ,\n      \"demand_tier\": \"very high / high / medium / low\",\n      \"registration_share_percent\"\
+    : 0.0,\n      \"key_cities\": []\n    }}\n  ],\n  \"variant_mix\": [\n    {{\n\
+    \      \"variant\": \"VXI\",\n      \"mix_percent\": 0.0,\n      \"notes\": \"\
+    \"\n    }}\n  ],\n  \"fuel_mix\": {{\n    \"petrol_percent\": 0,\n    \"cng_percent\"\
+    : 0,\n    \"diesel_percent\": 0,\n    \"ev_percent\": 0\n  }},\n  \"seasonality\"\
+    : {{\n    \"peak_months\": [\"October\", \"November\", \"January\"],\n    \"low_months\"\
+    : [\"July\", \"August\"],\n    \"festive_uplift_percent\": 0.0\n  }},\n  \"data_confidence\"\
+    : \"high / medium / low (estimated)\",\n  \"data_sources\": []\n}}\n```\n\nUse\
+    \ the latest available SIAM/FADA/industry data. Estimate where actual data is\
+    \ unavailable.\nReturn ONLY the JSON."
+  pricing_data: "You are an automotive pricing intelligence expert for India.\n\n\
+    Research current and historical pricing for all variants of {brand} {model}.\n\
+    \nReturn a JSON object:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\",\n\
+    \  \"current_prices\": [\n    {{\n      \"variant\": \"LXI\",\n      \"fuel_type\"\
+    : \"Petrol\",\n      \"ex_showroom_delhi_inr\": 0,\n      \"on_road_approx_inr\"\
+    : 0,\n      \"as_of\": \"2024-10\"\n    }}\n  ],\n  \"price_history\": [\n   \
+    \ {{\n      \"date\": \"2024-01\",\n      \"variant\": \"VXI Petrol\",\n     \
+    \ \"ex_showroom_inr\": 0,\n      \"change_from_previous\": 0,\n      \"reason\"\
+    : \"Annual price hike / Launch / Refresh\"\n    }}\n  ],\n  \"offers_and_benefits\"\
+    : {{\n    \"current_month\": {{\n      \"cash_discount_inr\": 0,\n      \"exchange_bonus_inr\"\
+    : 0,\n      \"corporate_discount_inr\": 0,\n      \"loyalty_bonus_inr\": 0,\n\
+    \      \"finance_subvention\": \"7.99% for 36 months\",\n      \"free_accessories_value_inr\"\
+    : 0,\n      \"total_benefit_inr\": 0\n    }}\n  }},\n  \"emi_examples\": [\n \
+    \   {{\n      \"on_road_price_inr\": 0,\n      \"down_payment_percent\": 20,\n\
+    \      \"tenure_months\": 60,\n      \"interest_rate_percent\": 8.5,\n      \"\
+    emi_inr\": 0\n    }}\n  ],\n  \"price_vs_competition\": [\n    {{\n      \"competitor\"\
+    : \"Honda Amaze\",\n      \"price_gap_inr\": 0,\n      \"gap_direction\": \"cheaper\
+    \ / costlier\"\n    }}\n  ],\n  \"value_assessment\": {{\n    \"price_segment\"\
+    : \"entry / mid-value / premium\",\n    \"feature_per_rupee_vs_segment\": \"best\
+    \ / good / average / below average\",\n    \"running_cost_monthly_estimate_inr\"\
+    : 0\n  }}\n}}\n```\n\nReturn ONLY the JSON."
+  ontology_summary: "You are a senior automotive product strategist.\n\nBased on all\
+    \ collected data about {brand} {model}, create a comprehensive\nAutomotive Intelligence\
+    \ Summary.\n\nReturn a JSON object:\n\n```json\n{{\n  \"vehicle_id\": \"{vehicle_id}\"\
+    ,\n  \"brand\": \"{brand}\",\n  \"model\": \"{model}\",\n  \"intelligence_card\"\
+    : {{\n    \"one_line_summary\": \"\",\n    \"positioning_statement\": \"\",\n\
+    \    \"target_customer_persona\": \"\",\n    \"key_value_proposition\": [],\n\
+    \    \"strengths\": [],\n    \"weaknesses\": [],\n    \"opportunities\": [],\n\
+    \    \"threats\": []\n  }},\n  \"purchase_decision_map\": {{\n    \"top_reasons_to_buy\"\
+    : [],\n    \"top_reasons_not_to_buy\": [],\n    \"key_trade_offs\": [],\n    \"\
+    best_variant_recommendation\": \"\",\n    \"best_fuel_recommendation\": \"\"\n\
+    \  }},\n  \"competitive_summary\": {{\n    \"vs_top_competitor\": {{\n      \"\
+    competitor\": \"\",\n      \"we_win_on\": [],\n      \"we_lose_on\": [],\n   \
+    \   \"verdict\": \"\"\n    }}\n  }},\n  \"market_health\": {{\n    \"growth_trajectory\"\
+    : \"growing / stable / declining\",\n    \"segment_outlook\": \"\",\n    \"risk_factors\"\
+    : [],\n    \"upcoming_threats\": []\n  }},\n  \"recommended_next_data_layers\"\
+    : [],\n  \"data_collection_timestamp\": \"\",\n  \"confidence_score\": 0.0\n}}\n\
+    ```\n\nReturn ONLY the JSON."
+intelligence:
+  slm_planner: "You are an SLM Automotive Intelligence Query Planner.\nAnalyze this\
+    \ user query and output a strict JSON plan without markdown code blocks.\n\nQuery:\
+    \ \"{query}\"\n\nSchema:\n{schema_summary}\n\nAvailable Tools:\n- decision_engine:\
+    \ Strategic decision evaluation, pricing repositioning scenarios, customer segment\
+    \ impact evaluation, and governed action proposals (e.g. 'Should [model] reduce\
+    \ price to compete with [rival]').\n- dynamic_cypher: Ad-hoc graph inquiries,\
+    \ segment profit/margin comparisons, price ladder distributions, sales volume\
+    \ aggregations, market entry/launch opportunities, or any analytical question\
+    \ not covered by dedicated tools. If choosing dynamic_cypher, you MUST provide\
+    \ a valid, read-only Cypher query in the \"dynamic_cypher\" field that queries\
+    \ the schema to answer the user query.\n- category_gap_analysis: Identifies and\
+    \ ranks product gaps, safety deficits, and unmet needs across vehicle categories/segments.\n\
+    - vehicle_spec_compare: Head-to-head spec/safety/price comparisons across 2+ models.\n\
+    - audience_fit: Ranks or evaluates models for specific customer segments (\"Small\
+    \ Urban Families\", \"Budget First-Time Buyers\", \"High-Mileage Gig Workers\"\
+    ).\n- competitor_vulnerability: Simulates price drops / discounts and evaluates\
+    \ rival vulnerability.\n- market_change_tracer: Investigates recorded market disruptions\
+    \ or safety leaps.\n- evidence_correlator: Links search intent signals to sales\
+    \ dispatch time series.\n- customer_behavior_analysis: Analyzes demographic (gender,\
+    \ age) impacts on vehicle buying factors and preferences.\n\nCypher Schema Rules\
+    \ (CRITICAL):\n- Vehicle segments: (s:VehicleSegment)<-[:BELONGS_TO]-(v:VehicleModel)\n\
+    - Customer segments: (cs:CustomerSegment)-[:CONSIDERS]->(v:VehicleModel)\n- Pricing:\
+    \ (v:VehicleModel)-[:HAS_VARIANT]->(:VehicleVariant)-[:HAS_PRICE_OBSERVATION]->(p:PriceObservation)\
+    \ OR (v)-[:HAS_PRICE_OBSERVATION]->(p:PriceObservation). Property: `p.ex_showroom_inr`\n\
+    - Sales volume: (v:VehicleModel)-[:HAS_SALES_OBSERVATION]->(so:SalesObservation).\
+    \ Property: `so.units_sold` (NEVER use `units`!)\n- Use undirected relationships\
+    \ `-[:CONSIDERS]-` or `-[:BELONGS_TO]-` if unsure of direction.\n\nJSON Schema:\n\
+    {{\n  \"intent\": \"DECISION_RECOMMENDATION\" | \"DYNAMIC_GRAPH_QUERY\" | \"CATEGORY_GAP_ANALYSIS\"\
+    \ | \"SPEC_FEATURE_COMPARE\" | \"AUDIENCE_FIT\" | \"COMPETITOR_VULNERABILITY\"\
+    \ | \"MARKET_CHANGE_INVESTIGATION\" | \"CORRELATION_ANALYSIS\" | \"CUSTOMER_BEHAVIOR_ANALYSIS\"\
+    ,\n  \"selected_tool\": \"decision_engine\" | \"dynamic_cypher\" | \"category_gap_analysis\"\
+    \ | \"vehicle_spec_compare\" | \"audience_fit\" | \"competitor_vulnerability\"\
+    \ | \"market_change_tracer\" | \"evidence_correlator\" | \"customer_behavior_analysis\"\
+    ,\n  \"target_models\": [\"Model1\"],\n  \"segments\": [\"SegmentName\"],\n  \"\
+    aspects\": [\"safety\", \"price\"],\n  \"parameters\": {{}},\n  \"dynamic_cypher\"\
+    : \"MATCH ... RETURN ... LIMIT 25\" or null,\n  \"complexity\": \"SIMPLE\" | \"\
+    COMPLEX\",\n  \"reasoning\": \"brief explanation\"\n}}"
+  llm_fallback_planner: "You are a Principal Automotive Knowledge Graph Architect.\n\
+    The user asked an ad-hoc or complex inquiry:\n\"{query}\"\n\nSchema:\n{schema_summary}\n\
+    \nConstruct a schema-aware READ-ONLY Cypher query to retrieve evidence from Neo4j.\n\
+    Rules:\n- Must only use MATCH, OPTIONAL MATCH, WITH, WHERE, RETURN, ORDER BY.\n\
+    - NEVER use CREATE, MERGE, SET, DELETE, DROP.\n- Include a LIMIT 25 clause.\n\
+    - Return clean node and property aliases (e.g. segment, min_price, max_price,\
+    \ units_sold).\n- Schema properties: SalesObservation has `units_sold` (NOT units),\
+    \ PriceObservation has `ex_showroom_inr`, VehicleModel has `name`, VehicleSegment\
+    \ has `name`.\n\nOutput JSON:\n{{\n  \"intent\": \"DYNAMIC_GRAPH_QUERY\",\n  \"\
+    selected_tool\": \"dynamic_cypher\",\n  \"dynamic_cypher\": \"MATCH ... RETURN\
+    \ ... LIMIT 25\",\n  \"target_models\": [],\n  \"complexity\": \"COMPLEX\",\n\
+    \  \"reasoning\": \"multi-hop Cypher traversal\"\n}}"
+  strategic_synthesis: 'You are a Senior Automotive Strategy Director.
+
+    User Question: "{query}"
+
+
+    Retrieved Knowledge Graph Evidence:
+
+    Tool: {selected_tool}
+
+    Summary: {summary}
+
+    Data:
+
+    {data_json}
+
+
+    Instructions:
+
+    1. Deliver a crisp, highly professional, executive-ready strategic analysis answering
+    the question directly.
+
+    2. Focus strictly on market dynamics, quantitative evidence, pricing bands, and
+    commercial impact.
+
+    3. Keep it clear, concise, and structured. Avoid buzzwords, filler, repetitive
+    meta-commentary, or robotic academic jargon (never use words like ''grounded finding'',
+    ''provenance ledger'', etc.).
+
+    4. Use bullet points for key takeaways where appropriate.
+
+    5. Reference concrete numbers, variant prices, and volume statistics from the
+    retrieved data.'
+  executive_brief: 'You are an Executive Automotive Product & Strategy Advisor.
+
+    Analyze the following strategic findings for an executive audience:
+
+
+    Inquiry: {query}
+
+    Key Findings:
+
+    {synthesis}
+
+
+    Provide a concise, 2-paragraph strategic recommendation focused on actionable
+    commercial decisions, product positioning, and risk mitigation.
+
+    Maintain an authoritative, quantitative executive tone. Do not use academic jargon.
+  graph_extractor: |
+    You are an Expert Automotive Knowledge Graph Architect.
+    Analyze the following automotive dossier for {brand} {model}:
+
+    {vehicle_dossier}
+
+    Extract all meaningful automotive entities and relationships without being constrained to predefined schemas.
+    Discover emergent concepts and deep dynamics, including:
+    - Core vehicle identity, segment, powertrain, variant hierarchy
+    - Engineering specs, safety metrics, and platform links
+    - Customer psychological drivers, lifestyle fit, and perceived barriers (e.g. AMT hesitation, badge stigma)
+    - Unmet market needs, critical product gaps, and customer complaints
+    - Direct and indirect competitive threats, substitution patterns, and price pressure points
+
+    Return a STRICT JSON object with this exact structure:
+    {{
+      "nodes": [
+        {{
+          "id": "UNIQUE_CANONICAL_ID",
+          "label": "SemanticLabel",
+          "name": "Human Readable Name",
+          "properties": {{
+            "key": "value"
+          }}
+        }}
+      ],
+      "relationships": [
+        {{
+          "source_id": "SOURCE_NODE_ID",
+          "target_id": "TARGET_NODE_ID",
+          "type": "SEMANTIC_RELATIONSHIP_TYPE",
+          "properties": {{
+            "confidence": 0.95,
+            "evidence": "brief factual grounding"
+          }}
+        }}
+      ]
+    }}
+
+    Return ONLY the valid JSON object, no markdown code fences.
+
+  intelligent_fit_reasoning: |
+    You are a Senior Automotive Consumer Intelligence Analyst.
+    Evaluate how well candidate vehicles fit the following customer segment:
+
+    Target Customer Segment: "{segment_name}"
+    Segment Priorities & Demographics:
+    {segment_context}
+
+    Candidate Vehicle Evidence from Knowledge Graph:
+    {candidates_data}
+
+    Instructions:
+    1. Do NOT use arbitrary linear formulas. Intelligently evaluate whether each vehicle genuinely satisfies the lifestyle, emotional status, practical usage, and financial constraints of this persona.
+    2. Identify specific dealbreakers, psychological hurdles, and unique advantages of each vehicle.
+    3. Score the fit percentage (0-100%) realistically based on overall appeal and market reception.
+
+    Return a STRICT JSON object:
+    {{
+      "rankings": [
+        {{
+          "rank": 1,
+          "model": "Vehicle Model Name",
+          "brand": "Brand Name",
+          "fit_percentage": 92.5,
+          "top_strengths": ["Clear strength 1", "Strength 2"],
+          "key_tradeoffs": ["Primary compromise or drawback"]
+        }}
+      ],
+      "strategic_rationale": "Concise 1-2 paragraph executive reasoning explaining why the top vehicle wins and the critical trade-offs for this persona."
+    }}
+    Return ONLY valid JSON, no markdown fences.
+
+  intelligent_vulnerability_reasoning: |
+    You are an Executive Automotive Pricing & Market Dynamics Director.
+    Evaluate the competitive impact of the following strategic action:
+
+    Target Vehicle: {target_model}
+    Proposed Action: {action_description}
+    Target Run-Rate: {target_baseline_volume} units/month
+
+    Rival Vehicles & Market Context from Knowledge Graph:
+    {rivals_data}
+
+    Instructions:
+    1. Do NOT use a hardcoded scalar elasticity. Reason about:
+       - Psychological price thresholds (e.g. breaking below ₹7L or ₹10L barriers)
+       - Brand equity and substitute switching friction (e.g. Maruti service network vs Honda refinement)
+       - Price band overlap and variant-to-variant cross-shopping
+       - Defection sensitivity and likely competitor countermeasures
+    2. Project realistic monthly volume gain for the target vehicle and monthly defection units for each vulnerable competitor.
+    3. Score vulnerability on a 0.00 to 1.00 scale based on competitive exposure.
+
+    Return a STRICT JSON object:
+    {{
+      "target_volume_gain_units": 1250,
+      "vulnerable_rivals": [
+        {{
+          "rival_name": "Rival Model",
+          "brand": "Rival Brand",
+          "competition_intensity": 0.88,
+          "price_overlap_pct": 90,
+          "vulnerability_score": 0.82,
+          "estimated_monthly_share_loss_units": 650,
+          "defection_mechanism": "Why customers switch from this rival to target"
+        }}
+      ],
+      "market_dynamics_summary": "Concise 1-2 paragraph executive explanation of the causal substitution mechanism and competitor retaliation risk."
+    }}
+    Return ONLY valid JSON, no markdown fences.
+
+  intelligent_gap_reasoning: |
+    You are a Chief Automotive Product Strategy Consultant.
+    Analyze product gaps and market opportunities for: {target_model}
+
+    Retrieved Vehicle Evidence & Voice-of-Customer from Knowledge Graph:
+    {graph_evidence}
+
+    Instructions:
+    1. Analyze real customer complaints, missing features, safety deficits, and competitive disadvantages against rivals.
+    2. Rank the top product gaps by commercial opportunity and severity (HIGH, MEDIUM, LOW).
+    3. For each gap, cite the primary customer complaint, compare against segment rival benchmarks, and recommend an actionable OEM fix.
+
+    Return a STRICT JSON object:
+    {{
+      "ranked_gaps": [
+        {{
+          "rank": 1,
+          "gap_name": "Name of Product Gap",
+          "severity": "HIGH",
+          "opportunity_gap_score": 0.85,
+          "importance_weight": 0.90,
+          "category_satisfaction": 0.40,
+          "primary_complaint": "Real customer feedback or pain point",
+          "source": "Voice of Customer / Editorial",
+          "rival_benchmark": "Which competitor handles this better",
+          "recommended_action": "Specific engineering or equipment countermeasure"
+        }}
+      ],
+      "strategic_opportunity_summary": "Concise 1-2 paragraph executive summary of the greatest commercial opportunities."
+    }}
+    Return ONLY valid JSON, no markdown fences.'
